@@ -1,3 +1,4 @@
+using Amazon.Lambda.Core;
 using ApiFunction;
 using FluentAssertions;
 using Microsoft.Extensions.Logging;
@@ -15,7 +16,7 @@ namespace ApiFunctionTests.GenopodsRequestResponseHandlerTests
         public async Task TheResponseIsCorrect(string input, string expectation)
         {
             var logger = Substitute.For<ILogger<GenopodsRequestResponseHandler>>();
-            var context = Substitute.For<Amazon.Lambda.Core.ILambdaContext>();
+            var context = Substitute.For<ILambdaContext>();
 
             var handler = new GenopodsRequestResponseHandler(logger);
             var result = await handler.HandleAsync(input, context);

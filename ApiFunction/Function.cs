@@ -3,6 +3,7 @@ using Kralizek.Lambda;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 using System.IO;
 
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
@@ -13,17 +14,17 @@ namespace ApiFunction
     {
         protected override void Configure(IConfigurationBuilder builder)
         {
-            // Use this method to register your configuration flow. Exactly like in ASP.NET Core
+            Console.WriteLine("Starting Configure");
+
             builder.SetBasePath(Directory.GetCurrentDirectory())
-                   .AddJsonFile("appsettings.json", optional: true)
+                   .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                    .AddEnvironmentVariables();
         }
 
         protected override void ConfigureLogging(ILoggerFactory loggerFactory, IExecutionEnvironment executionEnvironment)
         {
-            // Use this method to install logger providers
+            Console.WriteLine("Starting ConfigureLogging");
 
-            /* Pushes the valid log entries into the CloudWatch log group created for this Lambda function */
             loggerFactory.AddLambdaLogger(new LambdaLoggerOptions
             {
                 IncludeCategory = true,
@@ -31,8 +32,6 @@ namespace ApiFunction
                 IncludeNewline = true,
                 Filter = (categoryName, logLevel) =>
                 {
-                    /* Here you can filter which logs should go to CloudWatch. */
-
                     return logLevel >= LogLevel.Information;
                 }
             });
@@ -40,10 +39,9 @@ namespace ApiFunction
 
         protected override void ConfigureServices(IServiceCollection services)
         {
-            // You need this line to register your handler
-            RegisterHandler<GenopodsRequestResponseHandler>(services);
+            Console.WriteLine("Starting ConfigureServices");
 
-            // Use this method to register your services. Exactly like in ASP.NET Core
+            RegisterHandler<GenopodsRequestResponseHandler>(services);
         }
     }
 }

@@ -16,6 +16,8 @@ namespace ApiFunction
 
         public async Task<string> HandleAsync(string input, ILambdaContext context)
         {
+            _logger.LogDebug("Starting HandleAsync method for Genopods function invocation.");
+
             if (input == null)
                 _logger.LogError("Input is null");
 
