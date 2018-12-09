@@ -9,23 +9,15 @@ install:
   # Install repo specific stuff here
 before_build:
   - ps: dotnet --version
-  - ps: dotnet restore .\src\ApiFunction\ --verbosity m
 build_script:
-  # output will be in ./src/bin/debug/netcoreapp2.0/publish
-  - ps: dotnet publish .\src\ApiFunction\
+  - ps: .\build.ps1 -t Package
 after_build:
   # For once the build has completed
 artifacts:
- - path: 'src\ApiFunction\bin\Debug\netcoreapp2.0\publish'
+ - path: '.\publish'
    name: Genopods
    type: WebDeployPackage
 clone_depth: 1
-test_script:
-  # restore packages for our unit tests
-  - ps: dotnet restore .\test\ApiFunctionTests\ --verbosity m
-  # run the unit tests (requires changing into the test directory)
-  - ps: cd .\test\ApiFunctionTests\
-  - ps: dotnet test
 on_finish :
   # any cleanup in here
 deploy: off

@@ -16,13 +16,13 @@ A place to be creative.
 ### Linux & macOS
 
 ```bash
-sh build.sh --target=Package
+sh build.sh -t Package
 ```
 
 ### Windows (Powershell)
 
 ```powershell
-build.ps1 --target=Package
+build.ps1 -t Package
 ```
 
 ### Local development

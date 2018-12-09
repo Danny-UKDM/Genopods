@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiFunction", "ApiFunction.csproj", "{0CFCF723-987D-453B-8489-4A38EC4FFD3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiFunction", ".\src\ApiFunction\ApiFunction.csproj", "{0CFCF723-987D-453B-8489-4A38EC4FFD3A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9FAC64B0-D815-4578-8E4E-C054DC150CEB}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9FAC64B0-D81
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4DA96CA9-7202-4F2F-A5CE-4FBBE0AE9506}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiFunctionTests", "..\..\test\ApiFunctionTests\ApiFunctionTests.csproj", "{D65A47ED-3EDF-476E-8EE1-2A618B7AF131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiFunctionTests", ".\test\ApiFunctionTests\ApiFunctionTests.csproj", "{D65A47ED-3EDF-476E-8EE1-2A618B7AF131}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

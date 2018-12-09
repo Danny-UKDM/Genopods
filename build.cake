@@ -107,7 +107,6 @@ Task("Build")
     {
         var msBuildSettings = new DotNetCoreMSBuildSettings 
         {
-            TreatAllWarningsAs = MSBuildTreatAllWarningsAs.Error,
             Verbosity = dotNetCoreVerbosity
         };
 
