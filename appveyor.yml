@@ -9,10 +9,10 @@ install:
   # Install repo specific stuff here
 before_build:
   - cmd: dotnet --version
-  - cmd: dotnet restore ./src/ApiFunction.csproj --verbosity m
+  - cmd: dotnet restore src/ApiFunction.csproj --verbosity m
 build_script:
   # output will be in ./src/bin/debug/netcoreapp2.0/publish
-  - cmd: dotnet publish ./src/ApiFunction.csproj
+  - cmd: dotnet publish src/ApiFunction.csproj
 after_build:
   # For once the build has completed
 artifacts:
@@ -22,7 +22,7 @@ artifacts:
 clone_depth: 1
 test_script:
   # restore packages for our unit tests
-  - cmd: dotnet restore ./test/ApiFunctionTests.csproj --verbosity m
+  - cmd: dotnet restore test/ApiFunctionTests.csproj --verbosity m
   # run the unit tests (requires changing into the test directory)
   - cmd: cd test
   - cmd: dotnet xunit
