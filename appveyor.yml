@@ -1,0 +1,31 @@
+version: '1.0.{build}'
+image: Visual Studio 2017
+branches:
+  only:
+  - master
+init:
+  - cmd: git config --global core.autocrlf true
+install:
+  # Install repo specific stuff here
+before_build:
+  - cmd: dotnet --version
+  - cmd: dotnet restore ./src/ApiFunction.csproj --verbosity m
+build_script:
+  # output will be in ./src/bin/debug/netcoreapp2.0/publish
+  - cmd: dotnet publish ./src/ApiFunction.csproj
+after_build:
+  # For once the build has completed
+artifacts:
+ - path: '\src\bin\Debug\netcoreapp2.0\publish'
+   name: Genopods
+   type: WebDeployPackage
+clone_depth: 1
+test_script:
+  # restore packages for our unit tests
+  - cmd: dotnet restore ./test/ApiFunctionTests.csproj --verbosity m
+  # run the unit tests (requires changing into the test directory)
+  - cmd: cd test
+  - cmd: dotnet xunit
+on_finish :
+  # any cleanup in here
+deploy: off
