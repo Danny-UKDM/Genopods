@@ -24,8 +24,8 @@ test_script:
   # restore packages for our unit tests
   - ps: dotnet restore .\test\ApiFunctionTests\ --verbosity m
   # run the unit tests (requires changing into the test directory)
-  - ps: cd .\test\
-  - ps: dotnet xunit
+  - ps: cd .\test\ApiFunctionTests\
+  - ps: dotnet test
 on_finish :
   # any cleanup in here
 deploy: off
